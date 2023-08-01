@@ -52,29 +52,29 @@ int main()
         ll n,total=0,start=Mx;
         cin>>n;
         vector<pair<ll,pair<ll,ll>>> v;
-        priority_queue<pair<ll,pair<ll,ll>>,vector<pair<ll,pair<ll,ll>>>,
-        greater<pair<ll,pair<ll,ll>>>> pq;
+        priority_queue<pair<ll,ll>,vector<pair<ll,ll>>,
+        greater<pair<ll,ll>>> pq;
 
         for(i=1;i<=n;i++){
             ll x,y;
-            cin>>x>>y; v.pb({i,{x,y}}),total+=y;
+            cin>>x>>y; v.pb({x,{y,i}});
             start=min(start,x);
         }
         ll ct=start,count=0;     
-        cout << start sp;
         while(1) {          
             for(j=0;j<n;j++){
-                if(v[j].fi and v[j].se.fi<=ct){
-                    pq.push({v[j].se.se,{v[j].se.fi,v[j].fi}});
-                    v[j].fi=0;            
+                if(v[j].fi>-1 and v[j].fi<=ct){
+                    pq.push({v[j].se.fi,v[j].se.se});
+                    v[j].fi=-1;            
                 }               
             }     
-            if(pq.empty()) { ct++,cout << "- " << ct sp;continue; }    
-            ll bt=pq.top().fi,p=pq.top().se.se;            
-            cout << "P" << p sp;
-            ct+=bt, cout << ct sp;           
-            pq.pop(), count++;
+            if(pq.empty()) { cout << ct sp << "- ",ct++;continue; }    
+            ll bt=pq.top().fi,p=pq.top().se;            
+            cout << ct sp << "P" << p sp;
+            ct+=bt;          
+            pq.pop(),count++;
             if(count==n) break;         
-        }         
+        }      
+        cout << ct nl; 
     }       
 }
