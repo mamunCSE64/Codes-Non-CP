@@ -68,9 +68,10 @@ int main()
                     v[j].fi=-1;            
                 }               
             }     
-            if(pq.empty()) { cout << ct sp << "- ",ct++;continue; }    
+            cout << ct sp;
+            if(pq.empty()) { cout << "- ",ct++;continue; }    
             ll bt=pq.top().fi,p=pq.top().se;            
-            cout << ct sp << "P" << p sp;
+            cout  << "P" << p sp;
             ct+=bt;          
             pq.pop(),count++;
             if(count==n) break;         
