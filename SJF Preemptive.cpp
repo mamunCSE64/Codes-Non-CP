@@ -54,7 +54,7 @@ int main()
         vector<pair<ll,pair<ll,ll>>> v; map<ll,ll> m;
         for(i=1;i<=n;i++){
             ll x,y;
-            cin>>x>>y;
+            cin>>x>>y; // here x is arrival time and y is burst time
             start=min(start,x);
             v.pb({x,{y,i}});
             m[x]++;
@@ -63,8 +63,8 @@ int main()
         greater<pair<ll,ll>>> pq;
         sort(v.begin(),v.end());   
         ll ct=start;
-        ll count=0,x=0;
         i=1;
+        cout << ct sp;
         next:
         while(v[i-1].fi==ct and i<=n){
             pq.push({v[i-1].se.fi,v[i-1].se.se}),i++;
@@ -72,12 +72,13 @@ int main()
         while(pq.size()){
             ll time=pq.top().fi,p=pq.top().se;
             pq.pop();
-            if(!time) continue;  
-            if(x!=p) cout << ct sp << 'p' << p sp;
-            ct++,x=p;
-            pq.push({time-1,p});
-            if(m[ct]) { goto next;}            
+            ct++,time--;
+            if(!time){ cout << 'p' << p sp <<  ct sp;goto next; }            
+            else if(m[ct]){
+               pq.push({time,p});
+               cout << 'p' << p sp <<  ct sp;goto next;
+            }    
+            else pq.push({time,p});
         }
-        cout << ct nl;
     }       
 }
