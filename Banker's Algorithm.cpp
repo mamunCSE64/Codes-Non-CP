@@ -41,7 +41,7 @@ int main()
     cout << "Initial Resource : " << endl;
     for(int i=0;i<R;i++) cout << iR[i] << " "; cout << endl;
     while(count<P){
-        bool deadlock=0;
+        bool deadlock=1;
         for(int i=0;i<P;i++){
             if(done[i]==0){
                 bool b=1;
@@ -54,12 +54,12 @@ int main()
                     for(int j=0;j<R;j++){
                         nR[j]+=allocR[i][j];
                     }
-                    done[i]=1,deadlock=1,count++;
+                    done[i]=1,deadlock=0,count++;
                     cout << "Safe State : P " << i << endl;
                 }                 
             }
         }
-        if(deadlock==0){ cout << "DeadLock Created " << endl; return 0;}
+        if(deadlock==1){ cout << "DeadLock Created " << endl; return 0;}
     }  
     cout << "Ending Resource : " << endl;
     for(int i=0;i<R;i++) cout << nR[i] << " "; cout << endl;
