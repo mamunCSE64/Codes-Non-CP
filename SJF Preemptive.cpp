@@ -15,7 +15,7 @@
 #define Mn LLONG_MIN
 
 using namespace std;
-
+// SJF Preemptive
 int main()
 {          
     int n,start=10000;
