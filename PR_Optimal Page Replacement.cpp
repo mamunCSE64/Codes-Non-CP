@@ -44,15 +44,9 @@ int main()
                         if(f2==n) f2=j;
                     }
                 }
-                if(f0>=f1 and f0>=f2){
-                    frame[0]=v;
-                }
-                else if(f1>=f0 and f1>=f2){
-                    frame[1]=v;
-                }
-                if(f2>=f1 and f2>=f0){
-                    frame[2]=v;
-                }
+                if(f0>=f1 and f0>=f2) frame[0]=v;
+                else if(f1>=f0 and f1>=f2) frame[1]=v;
+                else frame[2]=v;
             }
         }
     }
