@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #include <iostream>
 using namespace std;
-
+// Dining Philosopher using Semaphore
 int signal(int s){
     s=s+1;
     return s;
