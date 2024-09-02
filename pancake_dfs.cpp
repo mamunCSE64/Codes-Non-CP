@@ -41,17 +41,19 @@ int main()
                 index[xx]=index[t];
                 index[xx].push_back(i+1);
             }else if(xx==result){
-                ans.push_back(index[t]),ans.back().push_back(i+1);
+                index[result]=index[t]; index[result].push_back(i+1);
+                ans.push_back(index[xx]);
             }
         }
     }        
     for(auto x: ans){
         if(x.size()==0){
-            cout << 0 << endl;continue;
+            cout << 0 ;
+        }else{
+            for(auto x: x){
+                cout << x << " ";
+            }
         }
-        for(auto x: x){
-            cout << x << " ";
-        }
-        cout << endl;;
+        cout << endl;
     }   
 }
