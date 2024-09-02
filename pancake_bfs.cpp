@@ -14,7 +14,7 @@ int main()
     for(i=0;i<=n;i++){
         int random_num=rand()%range+1;
         v.push_back(random_num);
-    }
+    }     
     cout << "First array : " << endl;
     for(auto x: v) cout << x << " ";cout << endl << endl;
     cout << "Will be sorted after reversing : " << endl;
@@ -41,7 +41,8 @@ int main()
                 index[xx]=index[t];
                 index[xx].push_back(i+1);
             }else if(xx==result){
-                ans.push_back(index[t]),ans.back().push_back(i+1);
+                index[result]=index[t]; index[result].push_back(i+1);
+                ans.push_back(index[xx]);
             }
         }
     }        
