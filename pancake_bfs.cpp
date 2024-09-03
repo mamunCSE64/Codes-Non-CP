@@ -22,7 +22,7 @@ int main()
     for(auto x: v) cout << x << " ";cout << endl << endl;
     vector<int> result=v;
     sort(result.begin(),result.end());        
-    map<vector<int>,vector<int>> index;
+    map<vector<int>,vector<int>> path;
     map<vector<int>,int> visited;
     vector<vector<int>> ans;
     queue<vector<int>> q;
@@ -31,22 +31,22 @@ int main()
         vector<int> t=q.front(); q.pop();   
         if(t==result){
             visited[result]=1;
-            ans.push_back(index[result]);
+            ans.push_back(path[result]);
             continue;
         }
         for(i=1;i<t.size();i++){
-            vector<int> xx;
-            for(j=i;j>=0;j--) xx.push_back(t[j]);
-            for(j=i+1;j<t.size();j++) xx.push_back(t[j]);
-            if(visited[xx]==0){
-                visited[xx]=1;
-                index[xx]=index[t];
-                index[xx].push_back(i+1);
-                if(xx==result) ans.push_back(index[xx]);
-                else q.push(xx);
-            }else if(xx==result){
-                index[result]=index[t]; index[result].push_back(i+1);
-                ans.push_back(index[result]);
+            vector<int> tmp;
+            for(j=i;j>=0;j--) tmp.push_back(t[j]);
+            for(j=i+1;j<t.size();j++) tmp.push_back(t[j]);
+            if(visited[tmp]==0){
+                visited[tmp]=1;
+                path[tmp]=path[t];
+                path[tmp].push_back(i+1);
+                if(tmp==result) ans.push_back(path[tmp]);
+                else q.push(tmp);
+            }else if(tmp==result){
+                path[result]=path[t]; path[result].push_back(i+1);
+                ans.push_back(path[result]);
             }
         }
     }        
